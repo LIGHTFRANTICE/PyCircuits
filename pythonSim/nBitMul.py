@@ -1,4 +1,3 @@
-from bitAdder import full_adder, half_adder
 from nBitCA import nBitRCA
 from convertion import bitStrToNum, numToBitstr
 

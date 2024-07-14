@@ -1,8 +1,7 @@
 from nBitCA import nBitRCA
 from nBitMul import shiftMul
 
-from bitTools import getMinus, getGap
-from bitTools import rightShift
+from bitTools import getMinus
 
 from convertion import bitStrToNum, numToBitstr
 

@@ -23,7 +23,7 @@ optional arguments:
 
 **The Output will be like:**
 
-'''terminal
+```terminal
 
 $ python .\main.py -p bf16 -c mult -9.3 2.1235345
 Converted -9.3 to Bitstring: 1100000100010100
@@ -33,4 +33,4 @@ Decimal Result: -2.0e+01
 True Result: -2.0e+01
 True
 
-'''
+```

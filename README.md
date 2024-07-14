@@ -2,10 +2,11 @@
 
 ## Environment
 
-### JUST make sure you have installed Python3 and NUMPY
+**JUST make sure you have installed Python3 and NUMPY**
 
 ## USAGE
 
+```terminal
 usage: main.py [-h] -p {fp64,fp32,fp16,fp8,bf16,int8,int16,int32} -c {add,mult} data0 data1
 
 Set precision and calculate mode.
@@ -20,6 +21,8 @@ optional arguments:
                         Choose a precision
   -c {add,mult}, --calmode {add,mult}
                         Choose a calculating mode, add or mult.
+
+'''
 
 **The Output will be like:**
 

@@ -27,7 +27,7 @@ def shiftMul(bitStr0, bitStr1):
 
 def main():
 
-    num0 = '125'
+    num0 = '-125'
     num1 = '125'
     precision = 'int32'
 

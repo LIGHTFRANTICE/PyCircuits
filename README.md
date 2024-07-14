@@ -34,3 +34,22 @@ True Result: -2.0e+01
 True
 
 ```
+
+The last line gives result of a comparision to the rounded true value calculated by Python's standard module.
+
+Values are rouded up to meet the precision as follows:
+
+```python
+
+if precision == 'fp64':
+        roundUp = '.14e'
+    elif precision == 'fp32':
+        roundUp = '.6e'
+    elif precision == 'fp16':
+        roundUp = '.2e'
+    elif precision == 'fp8':
+        roundUp = '.0e'
+    elif precision == 'bf16':
+        roundUp = '.1e'
+
+```

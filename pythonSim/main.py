@@ -1,7 +1,7 @@
 import argparse
 
 from fpModule import fpModule
-from multsByPrecisions import FPMult
+from intModule import intModule
 from convertion import bitStrToNum, numToBitstr
 
 
@@ -33,6 +33,8 @@ def main():
 
         if precision == 'fp64' or precision == 'fp32' or precision == 'fp16' or precision == 'fp8' or precision == 'bf16':
             result = fpModule(dataStr0, dataStr1, precision).adder()
+        elif precision == 'int32' or precision == 'int16' or precision == 'int8':
+            result = intModule(dataStr0, dataStr1, precision).adder()
 
         else:
             raise TypeError(f"Unsupported precision type: {precision}")
@@ -41,6 +43,8 @@ def main():
 
         if precision == 'fp64' or precision == 'fp32' or precision == 'fp16' or precision == 'fp8' or precision == 'bf16':
             result = fpModule(dataStr0, dataStr1, precision).mult()
+        elif precision == 'int32' or precision == 'int16' or precision == 'int8':
+            result = intModule(dataStr0, dataStr1, precision).mult()
 
         else:
             raise TypeError(f"Unsupported precision type: {precision}")
@@ -51,13 +55,13 @@ def main():
     
     deResult = bitStrToNum(result, precision)
 
-    return args.data0, args.data1, result, deResult, precision
+    return args.data0, args.data1, mode, result, deResult, precision
 
 
 if __name__ == "__main__" :
     #print(numToBitstr(3.12, 'fp32'))
     
-    num0, num1, result, deResult, precision = main()
+    num0, num1, mode, result, deResult, precision = main()
 
     if precision == 'fp64':
         roundUp = '.14e'
@@ -69,14 +73,25 @@ if __name__ == "__main__" :
         roundUp = '.0e'
     elif precision == 'bf16':
         roundUp = '.1e'
-
+    else:
+        roundUp = ''
+    
     print(f'Binary Result: {result}')
     print(f'Decimal Result: {format(deResult, roundUp)}')
 
-    
+    if 'int' in precision:
+        if mode == 'add':
+            trueResult = int(num0)+int(num1)
+        elif mode == 'mult':
+            trueResult = int(num0)*int(num1)
+    elif 'fp' in precision or 'bf' in precision:
+        if mode == 'add':
+            trueResult = format(float(num0)+float(num1), roundUp)
+        elif mode == 'mult':
+            trueResult = format(float(num0)*float(num1), roundUp)
 
-    print(f'True Result: {format(float(num0)*float(num1), roundUp)}')
-    if format(deResult, roundUp) == format(float(num0)*float(num1), roundUp):
+    print(f'True Result: {trueResult}')
+    if deResult == trueResult:
         print(True)
     else:
         print(False)

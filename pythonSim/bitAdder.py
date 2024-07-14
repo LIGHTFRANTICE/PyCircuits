@@ -1,5 +1,9 @@
 from logicGates import LogicGates
+#import ray
 
+#ray.init()
+
+#@ray.remote
 def half_adder(a, b):
     """
     Perform half adder operation.
@@ -11,6 +15,7 @@ def half_adder(a, b):
     carry = LogicGates.andGate(a, b)  # AND operation
     return sum, carry
 
+#@ray.remote
 def full_adder(a, b, carry_in):
     """
     Perform full adder operation.

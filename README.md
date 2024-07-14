@@ -22,7 +22,7 @@ optional arguments:
   -c {add,mult}, --calmode {add,mult}
                         Choose a calculating mode, add or mult.
 
-'''
+```
 
 **The Output will be like:**
 
